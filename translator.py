@@ -3,8 +3,16 @@ from tensorflow import keras
 from tensorflow.keras.layers import TextVectorization
 import pickle
 from source import PositionalEmbedding, CustomSchedule, masked_loss, masked_accuracy
-from text_vec import eng_vectorizer, fra_vectorizer
 import numpy as np
+
+with open("vectorize.pickle", "rb") as file:
+  data = pickle.load(file)
+	
+eng_vectorizer = TextVectorization.from_config(data["engvec_config"])
+eng_vectorizer.set_weights(data["engvec_weights"])
+
+fra_vectorizer = TextVectorization.from_config(data["fravec_config"])
+fra_vectorizer.set_weights(data["fravec_weights"])
 
 vocab_size_en = 10000
 vocab_size_fr = 20000
