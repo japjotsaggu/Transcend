@@ -8,7 +8,7 @@ from text_vec import eng_vectorizer, fra_vectorizer
 
 vocab_size_en = 10000
 vocab_size_fr = 20000
-seq_length = 20
+seq_len = 20
 
 custom_objects = {"PositionalEmbedding": PositionalEmbedding, "CustomSchedule": CustomSchedule, "masked_loss": masked_loss, "masked_accuracy": masked_accuracy}
 
@@ -20,7 +20,7 @@ def translate(sentence):
   lookup = list(fra_vectorizer.get_vocabulary())
   start_sentinel, end_sentinel = "[start]", "[end]"
   output_sentence = [start_sentinel]
-  for i in range(seq_length):
+  for i in range(seq_len):
     vector = fra_vectorizer([" ".join(output_sentence)])
     assert vector.shape == (1, seq_len+1)
     dec_tokens = vector[:, :-1]
