@@ -20,7 +20,7 @@ def translate(sentence):
   lookup = list(fra_vectorizer.get_vocabulary())
   start_sentinel, end_sentinel = "[start]", "[end]"
   output_sentence = [start_sentinel]
-  for i in range(seq_len):
+  for i in range(seq_length):
     vector = fra_vectorizer([" ".join(output_sentence)])
     assert vector.shape == (1, seq_len+1)
     dec_tokens = vector[:, :-1]
