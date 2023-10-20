@@ -198,19 +198,3 @@ def masked_accuracy(label, pred):
   mask = tf.cast(mask, dtype=tf.float32)
   return tf.reduce_sum(match)/tf.reduce_sum(mask)
 
-#compiling the transformer with custom learning rate, masked loss and accuracy
-vocab_size_en = 10000
-vocab_size_fr = 20000
-seq_len = 20
-num_layers = 4
-num_heads = 8
-key_dim = 128
-ff_dim = 512
-dropout = 0.1
-model = transformer(num_layers, num_heads, seq_len, key_dim, ff_dim, vocab_size_en, vocab_size_fr, dropout)
-lr = CustomSchedule(key_dim)
-optimizer = tf.keras.optimizers.Adam(lr, beta_1=0.9, beta_2=0.98, epsilon=1e-9)
-model.compile(loss=masked_loss, optimizer=optimizer, metrics=[masked_accuracy])
-model.summary()
-
-history = model.fit(train_ds, epochs=20, validation_data=val_ds)
