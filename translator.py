@@ -1,6 +1,6 @@
+import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.layers import TextVectorization
-from source.py import PositionalEmbedding, CustomSchedule
 
 with open("vectorize.pickle", "rb") as fp:
   data = pickle.load(fp)
@@ -15,10 +15,7 @@ vocab_size_fr = 20000
 seq_length = 20
 
 
-custom_objects = {"PositionalEmbedding": PositionalEmbedding,"CustomSchedule": CustomSchedule, "masked_loss": masked_loss, "masked_accuracy": masked_accuracy}
-
-with tf.keras.utils.custom_object_scope(custom_objects):
-  model = tf.keras.models.load_model("model.h5")	
+model = tf.keras.models.load_model("model.h5")	
 	
 def translate(sentence):
   enc_tokens = eng_vectorizer([sentence])
