@@ -1,4 +1,6 @@
 from tensorflow.keras.layers import TextVectorization
+import pickle
+
 with open("text_pairs.pickle", "rb") as tp:
   text_pairs = pickle.load(tp)
 
