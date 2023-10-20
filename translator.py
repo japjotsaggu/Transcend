@@ -4,7 +4,7 @@ from tensorflow.keras.layers import TextVectorization
 import pickle
 from source import PositionalEmbedding, CustomSchedule, masked_loss, masked_accuracy
 from text_vec import eng_vectorizer, fra_vectorizer
-
+import numpy as np
 
 vocab_size_en = 10000
 vocab_size_fr = 20000
