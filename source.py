@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.layers import TextVectorization
+import numpy as np
 
 #POSIITONAL ENCODING
 def pos_enc_matrix(L, d, n=10000):
