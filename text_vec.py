@@ -1,5 +1,6 @@
 from tensorflow.keras.layers import TextVectorization
 import pickle
+import random
 
 with open("text_pairs.pickle", "rb") as tp:
   text_pairs = pickle.load(tp)
