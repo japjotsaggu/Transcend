@@ -3,22 +3,18 @@ from tensorflow import keras
 from tensorflow.keras.layers import TextVectorization
 import pickle
 from source import PositionalEmbedding, CustomSchedule, masked_loss, masked_accuracy
+from text_vec import eng_vectorizer, fra_vectorizer
 
-with open("vectorize.pickle", "rb") as fp:
-  data = pickle.load(fp)
-
-eng_vectorizer = TextVectorization.from_config(data["engvec_config"])
-eng_vectorizer.set_weights(data["engvec_weights"])
-fra_vectorizer = TextVectorization.from_config(data["fravec_config"])
-fra_vectorizer.set_weights(data["fravec_weights"])
 
 vocab_size_en = 10000
 vocab_size_fr = 20000
 seq_length = 20
 
+custom_objects = {"PositionalEmbedding": PositionalEmbedding, "CustomSchedule": CustomSchedule, "masked_loss": masked_loss, "masked_accuracy": masked_accuracy}
 
-model = tf.keras.models.load_model("model.h5")	
-	
+with tf.keras.utils.custom_object_scope(custom_objects):
+  model = tf.keras.models.load_model("model.h5")
+
 def translate(sentence):
   enc_tokens = eng_vectorizer([sentence])
   lookup = list(fra_vectorizer.get_vocabulary())
