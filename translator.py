@@ -1,10 +1,13 @@
 from tensorflow import keras
-model = keras.models.load_model("model.h5")
 
 seq_len = 20
 vocab_size_en = 10000
 vocab_size_fr = 20000
+custom_objects = {"PositionalEmbedding": PositionalEmbedding,"CustomSchedule": CustomSchedule, "masked_loss": masked_loss, "masked_accuracy": masked_accuracy}
 
+with tf.keras.utils.custom_object_scope(custom_objects):
+  model = tf.keras.models.load_model("model.h5")	
+	
 def translate(sentence):
   enc_tokens = eng_vectorizer([sentence])
   lookup = list(fra_vectorizer.get_vocabulary())
