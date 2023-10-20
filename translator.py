@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.layers import TextVectorization
+import pickle
 from source import PositionalEmbedding, CustomSchedule, masked_loss, masked_accuracy
 
 with open("vectorize.pickle", "rb") as fp:
