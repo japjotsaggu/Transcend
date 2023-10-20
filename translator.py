@@ -1,0 +1,36 @@
+from tensorflow import keras
+model = keras.models.load_model("model.h5")
+
+seq_len = 20
+vocab_size_en = 10000
+vocab_size_fr = 20000
+
+def translate(sentence):
+  enc_tokens = eng_vectorizer([sentence])
+  lookup = list(fra_vectorizer.get_vocabulary())
+  start_sentinel, end_sentinel = "[start]", "[end]"
+  output_sentence = [start_sentinel]
+  for i in range(seq_len):
+    vector = fra_vectorizer([" ".join(output_sentence)])
+    assert vector.shape == (1, seq_len+1)
+    dec_tokens = vector[:, :-1]
+    assert dec_tokens.shape == (1, seq_len)
+    pred = model([enc_tokens, dec_tokens])
+    assert pred.shape == (1, seq_len, vocab_size_fr)
+    word = lookup[np.argmax(pred[0, i, :])]
+    output_sentence.append(word)
+    if word == end_sentinel:
+      break
+  return output_sentence
+
+def main():
+	while True:
+		eng_text = input("Write a sentence in English to translate to French, type @exit$ to exit")
+		if eng_text == "@exit$":
+			break
+
+		fr_text = translate(eng_text)
+		print("Translation:", ' '.join(fr_text))
+
+if __name__ == "__main__":
+    main()
