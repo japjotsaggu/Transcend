@@ -14,6 +14,9 @@ The attention mechanism lies at the core of the transformer model. Using this me
 
 ## Architecture 
 
+https://github.com/japjotsaggu/Transcend/assets/119132799/c432604d-b6c9-412d-9359-997dee54cda9
+
+
 ## Installation and usage 
 1. Clone the repo
    
