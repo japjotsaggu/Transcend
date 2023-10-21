@@ -8,7 +8,7 @@ Essentially, a transformer is a deep learning model that comprises an encoder an
 To know more about the process, intricacies and the architecture, [Explore Documentation](https://docs.google.com/document/d/129vcTkC4QC5IEbgkc4V8UDmAVlj3XwShBoIUCMY_H6g/edit?usp=sharing)
 
 ## Attention is all we need 
-The attention mechanism lies at the core of the transformer model. Using this mechanism, the transformer eliminates the need for using Recurrent Neural Networks (RNNs) that come with their own set of limitations. To know more about attention and the transformer model architecture, check out my blog post [here](https://medium.com/@japjotsaggu31/attention-architecture-breaking-down-the-transformer-model-c870640de47a).
+The attention mechanism lies at the core of the transformer model. Using this mechanism, the transformer eliminates the need for using Recurrent Neural Networks (RNNs) that come with their own set of limitations. To know more about attention and the transformer model architecture, check out my blog post [here: Attention & Architecture — Breaking down the Transformer model](https://medium.com/@japjotsaggu31/attention-architecture-breaking-down-the-transformer-model-c870640de47a).
 
 ![Picture 1](https://github.com/japjotsaggu/Transcend/assets/119132799/82e81659-34a8-4af6-9f74-36933538dd95)
 
