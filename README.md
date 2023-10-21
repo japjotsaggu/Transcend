@@ -30,7 +30,7 @@ https://github.com/japjotsaggu/Transcend/assets/119132799/c432604d-b6c9-412d-935
    
 4. Install the required dependencies
    
-   ```pip install -r requirements.txt```
+   ```pip install tensorflow```
    
 5. Run application
    
